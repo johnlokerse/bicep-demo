@@ -1,1 +1,1 @@
-bicep-demo
+# A demo repository containing the foundation of Bicep

@@ -1,9 +1,16 @@
+// param <parameter-name> <parameter-data-type> = <default-value>
+
+// decorators
 @description('Location input')
 @allowed([
   'westeurope'
   'northeurope'
 ])
-param location string
+param parLocation string
 
 @secure()
-param password string
+param parPassword string
+
+@minLength(4)
+@maxLength(10)
+param parUserName string

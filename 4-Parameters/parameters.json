@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "allowedValues": [
+        "westeurope",
+        "northeurope"
+      ],
+      "metadata": {
+        "description": "Location input"
+      }
+    },
+    "password": {
+      "type": "secureString"
+    },
+    "userName": {
+      "type": "string",
+      "maxLength": 10,
+      "minLength": 4
+    }
+  },
+  "resources": []
+}

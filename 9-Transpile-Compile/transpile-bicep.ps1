@@ -1,0 +1,1 @@
+az bicep build --file virtualMachine.bicep --outfile virtualMachine-Transpiled.json

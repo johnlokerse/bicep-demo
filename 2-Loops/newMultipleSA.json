@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "copy": {
+        "name": "myStorageAccount",
+        "count": "[length(range(0, 3))]"
+      },
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-06-01",
+      "name": "[concat(uniqueString(resourceGroup().id), 'stg', range(0, 3)[copyIndex()])]",
+      "kind": "StorageV2",
+      "location": "westeurope",
+      "sku": {
+        "name": "Standard_LRS"
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "rgPreFix": {
+      "type": "string",
+      "defaultValue": "rg-weu-",
+      "metadata": {
+        "description": "Prefix for a resource group"
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "westeurope",
+      "metadata": {
+        "description": "Resource group location"
+      }
+    }
+  },
+  "variables": {
+    "amount": 5
+  },
+  "resources": [
+    {
+      "copy": {
+        "name": "rg",
+        "count": "[length(range(0, variables('amount')))]"
+      },
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2021-04-01",
+      "name": "[format('{0}myworkload-{1}', parameters('rgPreFix'), range(0, variables('amount'))[copyIndex()])]",
+      "location": "[parameters('location')]"
+    }
+  ]
+}
